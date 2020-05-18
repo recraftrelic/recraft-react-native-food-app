@@ -14,7 +14,7 @@ export enum LanguageKey {
 
 export interface AppLanguage {
   firstButton: string,
-  secondButton: string
+  welcome: string,
 }
 
 export interface LanguagesMap {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ViewProps, SafeAreaView, StyleProp, ViewStyle, StatusBar } from 'react-native';
+import { ViewProps, View, StyleProp, ViewStyle, StatusBar } from 'react-native';
 import { AppTheme, AppConstants } from '../../config/DefaultConfig';
 import { ThemeKey } from '../../config/themes';
 import useTheme from '../../hooks/useTheme';
@@ -17,17 +17,17 @@ const ThemedView: React.FunctionComponent<Props> = (props: Props) => {
 
   const { selectedTheme }: AppConstants = useConstants();
 
-  const selectedStatusBar = selectedTheme == ThemeKey.dark ? "light-content" : "dark-content"
+  const selectedStatusBar = selectedTheme == ThemeKey.dark ? "light-content" : "light-content"
 
   const themeColorStyle: StyleProp<ViewStyle> = [{backgroundColor: theme.backgroundColor}];
 
   const newStyle: StyleProp<ViewStyle> = themeColorStyle.concat(style)
 
   return (
-    <SafeAreaView style={newStyle} {...restProps}>
-      <StatusBar barStyle={selectedStatusBar} backgroundColor={theme.backgroundColor}/>
+    <View style={[newStyle,{backgroundColor: theme.appColor}]} {...restProps}>
+      <StatusBar barStyle={selectedStatusBar} backgroundColor={theme.appColor}/>
       {props.children}
-    </SafeAreaView>
+    </View>
   )
 };
 

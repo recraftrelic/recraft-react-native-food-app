@@ -9,22 +9,29 @@ export interface AppTheme {
     lightTextColor: string,
     lightBottomColor: string,
     alternateMessageBackgroundColor: string,
+    appColor: string,
+    navColor: string,
 }
 
 export interface AppConstants {
     selectedTheme: ThemeKey,
     selectedLanguage: LanguageKey,
     title: string,
+    recraftLogo: any,
 }
 
 export interface ApplicationConfig {
     constants?: AppConstants
 }
 
+// @ts-ignore
+const Logo = require("../images/logo.png")
+
 export const defaultConfig: ApplicationConfig = {
     constants: {
       selectedTheme: ThemeKey.light,
       selectedLanguage: LanguageKey.en,
-      title: "Base App",
+      title: "Recraft Food",
+      recraftLogo: Logo,
     }
 }
