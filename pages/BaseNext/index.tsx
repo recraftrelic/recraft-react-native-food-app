@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
-import { View, ViewStyle, StyleSheet, ImageBackground, TouchableOpacity, Image, ImageStyle, TextStyle } from 'react-native';
+import { View, ViewStyle, StyleSheet, ImageBackground, TouchableOpacity, Image, ImageStyle, TextStyle, Platform } from 'react-native';
 import { AppLanguage,} from '../../config/languages';
 import useLanguage from '../../hooks/useLanguage';
 import ThemedText from '../../components/UI/ThemedText';
@@ -9,6 +9,8 @@ import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const isIOS = (): Boolean => Platform.OS == "ios";
 
 // @ts-ignore
 const ImagePath = require("../../images/main-bg.jpg");
@@ -19,6 +21,9 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
 
     const backButton = () => {
         history.goBack();
+    }  
+    const goToLogin = () => {
+        history.push('login');
     }  
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
@@ -42,7 +47,7 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
               <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.welcome}</ThemedText>
             </View>
             <View style={style.secondContainer}>
-              <RoundButton buttonStyle={style.button} label="Sign in" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} />
+              <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToLogin}/>
               <RoundButton buttonStyle={style.button} label="Register" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} />
             </View>
           </ImageBackground>
@@ -119,7 +124,8 @@ interface Style {
     backContainer: {
       flexDirection: 'row', 
       justifyContent: "space-between", 
-      paddingLeft: 20
+      paddingLeft: 20,
+      paddingTop: isIOS() ? 30 : 0
     },
     leftContainer: {
       flex: 0, 
