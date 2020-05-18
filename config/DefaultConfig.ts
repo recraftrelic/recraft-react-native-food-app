@@ -9,6 +9,8 @@ export interface AppTheme {
     lightTextColor: string,
     lightBottomColor: string,
     alternateMessageBackgroundColor: string,
+    appColor: string,
+    navColor: string,
 }
 
 export interface AppConstants {

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon May 18 15:06:27 IST 2020
+#Mon May 18 16:37:23 IST 2020
 70.path=fonts/Ionicons.ttf
 78.base=/Users/recraft-3/recraft/recraft-react-native-food-app/android/app/build/intermediates/merged_assets/debug/out
 64.base=/Users/recraft-3/recraft/recraft-react-native-food-app/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
