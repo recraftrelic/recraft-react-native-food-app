@@ -2,5 +2,5 @@ import { AppLanguage } from '../languages'
 
 export const ch: AppLanguage = {
   firstButton: "下一个",
-  secondButton: "背部"
+  welcome: "Always Eat Healthy Food",
 }

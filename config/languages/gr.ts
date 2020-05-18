@@ -2,5 +2,5 @@ import { AppLanguage } from '../languages'
 
 export const gr: AppLanguage = {
   firstButton: "Nächster",
-  secondButton: "zurück"
+  welcome: "Always Eat Healthy Food",
 }
