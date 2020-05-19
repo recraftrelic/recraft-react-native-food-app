@@ -15,6 +15,20 @@ export enum LanguageKey {
 export interface AppLanguage {
   firstButton: string,
   welcome: string,
+  signIn: string,
+  signUp: string,
+  signText: string,
+  remember: string,
+  forgetText: string,
+  signWith: string,
+  checkAcc: string,
+  loginValidation: loginValidation,
+}
+
+export interface loginValidation {
+  username: string,
+  password: string,
+  passwordLength: string,
 }
 
 export interface LanguagesMap {

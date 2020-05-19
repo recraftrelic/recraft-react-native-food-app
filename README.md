@@ -9,10 +9,16 @@ Note
 
 > You can also get the app on play store 
 
-Demo
+IOS Demo
 =======
 <p align="center">
-  <img width="250" src="./images/previews/ios.gif"><img width="250" src="./images/previews/android.gif">
+  <img width="250" src="./images/previews/ios-1.gif"><img width="250" src="./images/previews/ios-2.gif"><img width="250" src="./images/previews/ios-3.gif">
+</p>
+
+Android Demo
+=======
+<p align="center">
+  <img width="250" src="./images/previews/android-1.gif"><img width="250" src="./images/previews/android-2.gif"><img width="250" src="./images/previews/android-3.gif">
 </p>
 
 Packages & Libraries used
