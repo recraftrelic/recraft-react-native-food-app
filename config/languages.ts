@@ -16,17 +16,30 @@ export interface AppLanguage {
   firstButton: string,
   welcome: string,
   signIn: string,
+  register: string,
   signUp: string,
   signText: string,
+  registerText: string,
   remember: string,
   forgetText: string,
   signWith: string,
+  registerWith: string,
   checkAcc: string,
   loginValidation: loginValidation,
+  signupValidation: signupValidation,
 }
 
 export interface loginValidation {
   username: string,
+  password: string,
+  passwordLength: string,
+}
+
+export interface signupValidation {
+  email: string,
+  validEmail: string,
+  phone: string,
+  validPhone: string,
   password: string,
   passwordLength: string,
 }

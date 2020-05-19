@@ -14,55 +14,65 @@ import { ValidationError } from '../../config/validation';
 import Input from '../../components/Base/Input';
 
 interface LoginField {
-    username?: string;
+    email?: string;
+    phone?: string;
     password?: string;
-}
+  }
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
-const Login: React.FunctionComponent<RouteComponentProps> = ({
+const Register: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
     const backButton = () => {
         history.goBack();
     }  
-    const goToSignup = () => {
-      history.push('/register');
-  }  
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
-    const [selected,setSelected] = useState<Boolean>(false);
 
     const validate = (data: LoginField): ValidationError => {
         const errors = microValidator.validate({
-          username: {
-              required: {
-                  errorMsg: language.loginValidation.username
-              }
-          },
-          password: {
-              required: {
-                  errorMsg: language.loginValidation.password
-              },
-              length: {
-                  min: 6,
-                  max: 12,
-                  errorMsg: language.loginValidation.passwordLength
-              }
-          },
+            email: {
+                required: {
+                    errorMsg: language.signupValidation.email
+                },
+                email: {
+                    errorMsg: language.signupValidation.validEmail
+                }
+            },
+            phone: {
+                required: {
+                    errorMsg: language.signupValidation.phone
+                },
+                regex: {
+                  pattern: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im,
+                  errorMsg: language.signupValidation.validPhone
+                }
+            },
+            password: {
+                required: {
+                    errorMsg: language.signupValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: language.signupValidation.passwordLength
+                }
+            },
         },data)
         
         return errors
       }
     
-      const [username,onChangeUsername] = useState<string>("")
+      const [email,onChangeEmail] = useState<string>("")
+      const [phone,onChangePhone] = useState<string>("")
       const [password,onChangePassword] = useState<string>("")
       const [errors,setErrors] = useState<ValidationError>({})
 
       const goToHome = () => {
-        const errors: ValidationError = validate({username: username,password: password})
+        const errors: ValidationError = validate({email: email,phone: phone,password: password,})
     
         if(!Object.keys(errors).length)
         {
@@ -86,38 +96,33 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
             </View>
             <ScrollView>
               <View style={style.topContainer}> 
-                <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.signIn}</ThemedText>
+                <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.register}</ThemedText>
               </View>
               <View style={style.topContainer}> 
-                <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.signText}</ThemedText>
+                <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.registerText}</ThemedText>
               </View>
               <View style={[style.extraStyle]}> 
-                <Input placeholder={"Email/Phone"} onChangeText={onChangeUsername} value={username} errors={errors.username}/>
+                <Input placeholder={"Phone"} onChangeText={onChangePhone} value={phone} errors={errors.phone}/>
+              </View>
+              <View style={[style.extraStyle]}> 
+                <Input placeholder={"Email"} onChangeText={onChangeEmail} value={email} errors={errors.email}/>
               </View>
               <View style={[style.extraStyle]}> 
                 <Input placeholder={"Password"} onChangeText={onChangePassword} value={password} errors={errors.password} secureTextEntry={true}/>
               </View>
-              <View style={style.topContainer}>
-                <View style={style.rightContainer}>
-                  <TouchableOpacity onPress={() => {setSelected(!selected)}}>
-                    <MaterialIcon name={selected ? "checkbox-marked" : "checkbox-blank"} size={20} color={theme.highlightTextColor} />
-                  </TouchableOpacity>
+              <View style={[style.topContainer, style.nexStyle]}>
+                <RoundButton buttonStyle={style.button} label={language.register} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
+              </View>
+              <View style={[style.topContainer, style.nexStyle]}>
+                <View style={style.leftContainer}>
+                  <View style={[style.hairline, {backgroundColor: theme.lightBottomColor}]} />
                 </View>
-                <View style={[style.rightContainer, {flex: 0}]}>
-                  <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.remember}</ThemedText>
+                <View style={style.centerContainer}>
+                  <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.registerWith}</ThemedText>
                 </View>
-              </View>
-              <View style={[style.topContainer, style.nexStyle]}>
-                <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
-              </View>
-              <View style={style.topContainer}>
-                <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgetText}</ThemedText>
-              </View>
-              <View style={[style.topContainer, style.nexStyle]}>
-                <ThemedText styleKey="highlightTextColor" style={style.smallText}>or</ThemedText>
-              </View>
-              <View style={[style.topContainer, style.nexStyle]}>
-                <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.signWith}</ThemedText>
+                <View style={[style.rightContainer, style.secondContainer]}>
+                  <View style={[style.hairline, {backgroundColor: theme.lightBottomColor}]} />
+                </View>
               </View>
               <View style={style.topContainer}>
                 <TouchableOpacity style={[style.iconContainer, {backgroundColor: theme.facebookColor}]}>
@@ -127,19 +132,13 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                   <MaterialIcon name={"google-plus"} size={30} color={theme.highlightTextColor} />
                 </TouchableOpacity>
               </View>
-              <View style={style.secondContainer}>
-                <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.checkAcc}</ThemedText>
-                <TouchableOpacity onPress={goToSignup}>
-                  <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.signUp}</ThemedText>
-                </TouchableOpacity>
-              </View>
             </ScrollView>
           </ImageBackground>
         </View>
     );
 }
 
-export default Login;
+export default Register;
 
 interface Style {
     mainContainer: ViewStyle;
@@ -152,9 +151,11 @@ interface Style {
     imageStyle: ImageStyle;
     logoImage: ImageStyle;
     logoContainer: ViewStyle;
+    centerContainer: ViewStyle;
     rightContainer: ViewStyle;
     iconContainer: ViewStyle;
     extraStyle: ViewStyle;
+    hairline: ViewStyle;
     nexStyle: ViewStyle;
     textStyle: TextStyle;
     smallText: TextStyle;
@@ -183,13 +184,8 @@ interface Style {
       paddingRight: 50,
     },
     secondContainer: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: "center",
-      paddingLeft: 50,
-      paddingRight: 50,
-      marginTop: 30,
-      marginBottom: 30
+      flex: 0, 
+      paddingTop: 0
     },
     button: {
       marginTop: 10,
@@ -250,9 +246,20 @@ interface Style {
       alignItems: "center",
       paddingTop: 10,
       marginRight: 20,
-      marginTop: 40
+      marginTop: 40,
+      marginBottom: 40
     },
     nexStyle: {
       paddingTop: 30,
-    }
+    },
+    centerContainer: {
+      alignItems: "center",
+      flex: 0,
+      marginLeft: 10,
+      marginRight: 10
+    },
+    hairline: {
+      height: 1,
+      width: 50
+    },
   });  

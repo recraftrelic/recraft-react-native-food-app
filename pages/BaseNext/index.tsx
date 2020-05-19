@@ -22,6 +22,9 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
     const goToLogin = () => {
         history.push('/login');
     }  
+    const goToRegister = () => {
+      history.push('/register');
+  }  
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
@@ -45,7 +48,7 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
             </View>
             <View style={style.secondContainer}>
               <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToLogin}/>
-              <RoundButton buttonStyle={style.button} label="Register" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} />
+              <RoundButton buttonStyle={style.button} label="Register" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToRegister}/>
             </View>
           </ImageBackground>
         </View>
