@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router-native';
-import { View, ViewStyle, StyleSheet, ImageBackground, TouchableOpacity, Image, ImageStyle, TextStyle, Platform } from 'react-native';
+import { View, ViewStyle, StyleSheet, ImageBackground, TouchableOpacity, Image, ImageStyle, TextStyle, Platform, ScrollView } from 'react-native';
 import { AppLanguage,} from '../../config/languages';
 import useLanguage from '../../hooks/useLanguage';
 import ThemedText from '../../components/UI/ThemedText';
@@ -9,25 +9,25 @@ import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell,} from 'react-native-confirmation-code-field';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
-const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
+const CELL_COUNT = 4;
+
+const VerifyCode: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
     const backButton = () => {
         history.goBack();
     }  
-    const goToLogin = () => {
-        history.push('/login');
-    }  
-    const goToRegister = () => {
-      history.push('/register');
-  }  
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
+    const [value, setValue] = useState('');
+    const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value, setValue});
     
     return (
         <View style={style.mainContainer}>
@@ -37,25 +37,32 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
                 <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
               </View>
             </TouchableOpacity>
-            <View style={[style.topContainer, style.logoContainer]}> 
-              <Image source={constants.recraftLogo} style={style.logoImage}/>
+            <View style={[style.topContainer, style.secondContainer]}> 
+              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.verify}</ThemedText>
             </View>
             <View style={style.topContainer}> 
-              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{constants.title}</ThemedText>
+              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.verifyText}</ThemedText>
             </View>
-            <View style={style.topContainer}> 
-              <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.welcome}</ThemedText>
+            <View style={[style.extraStyle]}> 
+            <CodeField ref={ref} {...props} value={value} onChangeText={setValue} cellCount={CELL_COUNT} rootStyle={style.codeFiledRoot} keyboardType="number-pad" textContentType="oneTimeCode" renderCell={({index, symbol, isFocused}) => (
+              <View key={index} onLayout={getCellOnLayoutHandler(index)} style={{borderBottomWidth: 2, borderColor: theme.highlightTextColor}}>
+                <ThemedText styleKey="highlightTextColor" style={[style.cell, isFocused]}>{symbol || (isFocused ? <Cursor /> : null)}</ThemedText>
+              </View>
+            )}
+            />
             </View>
-            <View style={style.secondContainer}>
-              <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToLogin}/>
-              <RoundButton buttonStyle={style.button} label="Register" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToRegister}/>
+            <View style={[style.topContainer, style.nexStyle]}>
+              <RoundButton buttonStyle={style.button} label={language.verifyCode} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor}/>
+            </View>
+            <View style={style.topContainer}>
+              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.resend}</ThemedText>
             </View>
           </ImageBackground>
         </View>
     );
 }
 
-export default BaseNext;
+export default VerifyCode;
 
 interface Style {
     mainContainer: ViewStyle;
@@ -66,10 +73,13 @@ interface Style {
     backIcon: ViewStyle;
     backContainer: ViewStyle;
     imageStyle: ImageStyle;
-    logoImage: ImageStyle;
-    logoContainer: ViewStyle;
+    extraStyle: ViewStyle;
+    nexStyle: ViewStyle;
+    codeFiledRoot: ViewStyle;
     textStyle: TextStyle;
+    smallText: TextStyle;
     title: TextStyle;
+    cell: TextStyle;
   }
   
   const style: Style = StyleSheet.create<Style>({
@@ -81,11 +91,6 @@ interface Style {
       justifyContent: 'center',
       flexDirection: 'column',
     },
-    logoImage: {
-      justifyContent: 'center',
-      width: 180, 
-      height: 180,
-    },
     topContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
@@ -94,12 +99,7 @@ interface Style {
       paddingRight: 50,
     },
     secondContainer: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: "center",
-      paddingLeft: 50,
-      paddingRight: 50,
-      marginBottom: 30
+      marginTop: 150
     },
     button: {
       marginTop: 10,
@@ -108,18 +108,19 @@ interface Style {
     },
     textStyle: {
       fontSize: 16, 
+      textTransform: 'uppercase'
+    },
+    smallText: {
+      fontSize: 12, 
+      textTransform: 'uppercase'
     },
     imageStyle: { 
       width: '100%', 
       height: '100%',
     },
     title: {
-      fontSize: 36,
+      fontSize: 26,
       fontWeight: 'bold',
-      textTransform: 'uppercase'
-    },
-    logoContainer: {
-      marginTop: 75
     },
     backContainer: {
       flexDirection: 'row', 
@@ -135,5 +136,25 @@ interface Style {
       fontSize: 25,
       paddingTop: 20,
       paddingLeft: 25,
+    },
+    extraStyle: {
+      marginTop: 20,
+      marginBottom: 20,
+      justifyContent: 'flex-start',
+      paddingLeft: 50,
+      paddingRight: 50
+    },
+    nexStyle: {
+      paddingTop: 30,
+    },
+    codeFiledRoot: {
+      marginTop: 20
+    },
+    cell: {
+      width: 40,
+      height: 40,
+      lineHeight: 38,
+      fontSize: 24,
+      textAlign: 'center',
     },
   });  

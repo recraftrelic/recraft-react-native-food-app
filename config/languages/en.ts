@@ -15,6 +15,10 @@ export const en: AppLanguage = {
   signWith: "Sign in with",
   registerWith: "Or Register with",
   checkAcc: "Don't have an account?",
+  verify: "Verify your Mobile",
+  verifyText: "Enter your code",
+  resend: "If don't get a code? resend",
+  verifyCode: "Verify Code",
   loginValidation : {
     username: `Email/Phone is required`,
     password: `Password is required`,

@@ -27,6 +27,10 @@ export interface AppLanguage {
   signWith: string,
   registerWith: string,
   checkAcc: string,
+  verify: string,
+  verifyText: string,
+  resend: string,
+  verifyCode: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }

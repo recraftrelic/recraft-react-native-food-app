@@ -69,7 +69,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     
         if(!Object.keys(errors).length)
         {
-          history.push('/base')
+          history.push('/verify')
         }
         else {
           setErrors(errors)

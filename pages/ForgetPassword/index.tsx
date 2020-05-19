@@ -50,7 +50,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     
         if(!Object.keys(errors).length)
         {
-          history.push('/base')
+          history.push('/verify')
         }
         else {
           setErrors(errors)
@@ -75,7 +75,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
               <Input placeholder={"Email/Phone"} onChangeText={onChangeEmail} value={email} errors={errors.email}/>
             </View>
             <View style={[style.topContainer, style.nexStyle]}>
-              <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
+              <RoundButton buttonStyle={style.button} label={"Send"} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
             </View>
           </ImageBackground>
         </View>
