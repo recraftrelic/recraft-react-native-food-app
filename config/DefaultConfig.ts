@@ -21,6 +21,7 @@ export interface AppConstants {
     selectedLanguage: LanguageKey,
     title: string,
     recraftLogo: any,
+    bannerImage: any,
 }
 
 export interface ApplicationConfig {
@@ -28,7 +29,8 @@ export interface ApplicationConfig {
 }
 
 // @ts-ignore
-const Logo = require("../images/logo.png")
+const Logo = require("../images/logo.png");
+const banner = require("../images/main-bg.jpg");
 
 export const defaultConfig: ApplicationConfig = {
     constants: {
@@ -36,5 +38,6 @@ export const defaultConfig: ApplicationConfig = {
       selectedLanguage: LanguageKey.en,
       title: "Recraft Food",
       recraftLogo: Logo,
+      bannerImage: banner,
     }
 }
