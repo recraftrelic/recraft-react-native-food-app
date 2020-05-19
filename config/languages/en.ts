@@ -11,7 +11,7 @@ export const en: AppLanguage = {
   signWith: "Sign in with",
   checkAcc: "Don't have an account?",
   loginValidation : {
-    username: `Username is required`,
+    username: `Email/Phone is required`,
     password: `Password is required`,
     passwordLength: 'Password length between 6 and 12',
   },

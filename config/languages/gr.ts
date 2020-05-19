@@ -1,17 +1,17 @@
 import { AppLanguage } from '../languages'
 
 export const gr: AppLanguage = {
-  firstButton: "Nächster",
-  welcome: "Always Eat Healthy Food",
-  signIn: "Sign in",
-  signUp: "Sign up",
-  signText: "Sign in to continue",
-  remember: "Remember",
-  forgetText: "Forgot your Password?",
-  signWith: "Sign in with",
-  checkAcc: "Don't have an account?",
+  firstButton: "Zu Essen bekommen",
+  welcome: "Iss immer gesundes Essen",
+  signIn: "Anmelden",
+  signUp: "Anmelden",
+  signText: "Melden Sie sich an, um fortzufahren",
+  remember: "Merken",
+  forgetText: "Passwort vergessen?",
+  signWith: "Melden Sie sich mit an",
+  checkAcc: "Sie haben noch keinen Account?",
   loginValidation : {
-    username: `Ein Benutzername wird benötigt`,
+    username: `E-Mail / Telefon ist erforderlich`,
     password: `Passwort wird benötigt`,
     passwordLength: 'Passwortlänge zwischen 6 und 12',
   },

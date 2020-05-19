@@ -1,17 +1,17 @@
 import { AppLanguage } from '../languages'
 
 export const sp: AppLanguage = {
-  firstButton: "siguiente",
-  welcome: "Always Eat Healthy Food",
-  signIn: "Sign in",
-  signUp: "Sign up",
-  signText: "Sign in to continue",
-  remember: "Remember",
-  forgetText: "Forgot your Password?",
-  signWith: "Sign in with",
-  checkAcc: "Don't have an account?",
+  firstButton: "Conseguir comida",
+  welcome: "Siempre come alimentos saludables",
+  signIn: "Registrarse",
+  signUp: "Regístrate",
+  signText: "Inicia sesión para continuar",
+  remember: "Recuerda",
+  forgetText: "¿Olvidaste tu contraseña?",
+  signWith: "Inicia sesión con",
+  checkAcc: "¿No tienes una cuenta?",
   loginValidation : {
-    username: `Se requiere nombre de usuario`,
+    username: `Se requiere correo electrónico / teléfono`,
     password: `se requiere contraseña`,
     passwordLength: 'Longitud de contraseña entre 6 y 12',
   },

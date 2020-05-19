@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, ViewStyle, TextInput, TextInputProps, Image, ImageStyle, Platform } from 'react-native';
+import { StyleSheet, View, ViewStyle, TextInput, TextInputProps, Platform } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from "../../hooks/useTheme";
 import ErrorText from './ErrorText';
@@ -40,8 +40,6 @@ interface Style {
     textContainer: ViewStyle;
     errorContainer: ViewStyle;
     searchContainer: ViewStyle;
-    iconStyle: ViewStyle;
-    imageStyle: ImageStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
@@ -61,14 +59,5 @@ const style: Style = StyleSheet.create<Style>({
         alignItems: "center",
         paddingTop: isIOS() ? 20 : 10,
         paddingBottom: isIOS() ? 10 : 0,
-    },
-    iconStyle: {
-        flex: 0,
-        alignItems: "flex-start",
-    },
-    imageStyle: {
-        width: 12, 
-        height: 15,
-        marginRight: isIOS() ? 3 : 5, 
     },
 })
