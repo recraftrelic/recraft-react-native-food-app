@@ -10,6 +10,8 @@ export const ch: AppLanguage = {
   registerText: "注册以继续",
   remember: "记得",
   forgetText: "忘记密码了吗？",
+  forget: "忘记密码d",
+  forgePasswordText: "输入您的电子邮件或电话",
   signWith: "登陆使用",
   registerWith: "或注册",
   checkAcc: "还没有帐号？",

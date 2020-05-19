@@ -22,6 +22,8 @@ export interface AppLanguage {
   registerText: string,
   remember: string,
   forgetText: string,
+  forget: string,
+  forgePasswordText: string,
   signWith: string,
   registerWith: string,
   checkAcc: string,

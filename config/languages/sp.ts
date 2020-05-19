@@ -10,6 +10,8 @@ export const sp: AppLanguage = {
   registerText: "Regístrate para continuar",
   remember: "Recuerda",
   forgetText: "¿Olvidaste tu contraseña?",
+  forget: "Contraseña olvidada",
+  forgePasswordText: "Ingrese su correo electrónico o teléfono",
   signWith: "Inicia sesión con",
   registerWith: "O regístrese con",
   checkAcc: "¿No tienes una cuenta?",

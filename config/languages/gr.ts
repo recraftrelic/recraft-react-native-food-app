@@ -10,6 +10,8 @@ export const gr: AppLanguage = {
   registerText: "Registrieren Sie sich, um fortzufahren",
   remember: "Merken",
   forgetText: "Passwort vergessen?",
+  forget: "Passwort vergessen",
+  forgePasswordText: "Geben Sie Ihre E-Mail-Adresse oder Ihr Telefon ein",
   signWith: "Melden Sie sich mit an",
   registerWith: "Oder registrieren Sie sich mit",
   checkAcc: "Sie haben noch keinen Account?",

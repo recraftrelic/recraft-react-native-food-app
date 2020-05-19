@@ -10,6 +10,8 @@ export const en: AppLanguage = {
   registerText: "Register to continue",
   remember: "Remember",
   forgetText: "Forgot your Password?",
+  forget: "Forget Password",
+  forgePasswordText: "Enter your Email or Phone",
   signWith: "Sign in with",
   registerWith: "Or Register with",
   checkAcc: "Don't have an account?",
