@@ -10,9 +10,6 @@ import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 
-// @ts-ignore
-const ImagePath = require("../../images/main-bg.jpg");
-
 interface Props extends RouteComponentProps {
   dispatch: Dispatch,
   history
@@ -31,7 +28,7 @@ const BaseHome: React.FunctionComponent<Props> = ({
 
   return (
     <View style={style.mainContainer}>
-      <ImageBackground source={ImagePath} style={style.imageStyle} >
+      <ImageBackground source={constants.bannerImage} style={style.imageStyle} >
         <View style={[style.topContainer, style.logoContainer]}> 
           <Image source={constants.recraftLogo} style={style.logoImage}/>
         </View>

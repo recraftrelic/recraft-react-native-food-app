@@ -12,9 +12,6 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
-// @ts-ignore
-const ImagePath = require("../../images/main-bg.jpg");
-
 const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
@@ -31,7 +28,7 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
     
     return (
         <View style={style.mainContainer}>
-          <ImageBackground source={ImagePath} style={style.imageStyle} >
+          <ImageBackground source={constants.bannerImage} style={style.imageStyle} >
             <TouchableOpacity style={style.backContainer} onPress={backButton}>
               <View style={style.leftContainer}>
                 <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
