@@ -13,13 +13,15 @@ import microValidator from 'micro-validator';
 import { ValidationError } from '../../config/validation';
 import Input from '../../components/Base/Input';
 
-interface ForgetField {
-    email?: string;
+interface ChangeField {
+    currentPassword?: string;
+    newPassword?: string;
+    confirmPassword?: string;
 }
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
-const Login: React.FunctionComponent<RouteComponentProps> = ({
+const ChangePassword: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
@@ -30,27 +32,54 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
 
-    const validate = (data: ForgetField): ValidationError => {
+    const validate = (data: ChangeField): ValidationError => {
         const errors = microValidator.validate({
-            email: {
+            currentPassword: {
                 required: {
-                    errorMsg: language.loginValidation.username
+                    errorMsg: language.loginValidation.password
                 },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: language.loginValidation.passwordLength
+                }
+            },
+            newPassword: {
+                required: {
+                    errorMsg: language.loginValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: language.loginValidation.passwordLength
+                }
+            },
+            confirmPassword: {
+                required: {
+                    errorMsg: language.loginValidation.password
+                },
+                length: {
+                    min: 6,
+                    max: 12,
+                    errorMsg: language.loginValidation.passwordLength
+                }
             },
         },data)
         
         return errors
       }
     
-      const [email,onChangeEmail] = useState<string>("")
+      const [currentPassword,onChangeCurrentPassword] = useState<string>("")
+      const [newPassword,onChangeNewPassword] = useState<string>("")
+      const [confirmPassword,onChangeConfirmPassword] = useState<string>("")
       const [errors,setErrors] = useState<ValidationError>({})
 
       const goToHome = () => {
-        const errors: ValidationError = validate({email: email,})
+        const errors: ValidationError = validate({currentPassword: currentPassword, newPassword: newPassword, confirmPassword: confirmPassword})
     
         if(!Object.keys(errors).length)
         {
-          history.push('/change')
+          history.push('/base')
         }
         else {
           setErrors(errors)
@@ -66,23 +95,26 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
               </View>
             </TouchableOpacity>
             <View style={[style.topContainer, style.secondContainer]}> 
-              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.forget}</ThemedText>
-            </View>
-            <View style={style.topContainer}> 
-              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgePasswordText}</ThemedText>
+              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.change}</ThemedText>
             </View>
             <View style={[style.extraStyle]}> 
-              <Input placeholder={"Email/Phone"} onChangeText={onChangeEmail} value={email} errors={errors.email}/>
+              <Input placeholder={"Current Password"} onChangeText={onChangeCurrentPassword} value={currentPassword} errors={errors.currentPassword}/>
+            </View>
+            <View style={[style.extraStyle]}> 
+              <Input placeholder={"New Password"} onChangeText={onChangeNewPassword} value={newPassword} errors={errors.newPassword}/>
+            </View>
+            <View style={[style.extraStyle]}> 
+              <Input placeholder={"Confirm Password"} onChangeText={onChangeConfirmPassword} value={confirmPassword} errors={errors.confirmPassword}/>
             </View>
             <View style={[style.topContainer, style.nexStyle]}>
-              <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
+              <RoundButton buttonStyle={style.button} label={language.change} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
             </View>
           </ImageBackground>
         </View>
     );
 }
 
-export default Login;
+export default ChangePassword;
 
 interface Style {
     mainContainer: ViewStyle;
@@ -126,7 +158,7 @@ interface Style {
       paddingRight: 50,
     },
     secondContainer: {
-      marginTop: 150
+      marginTop: 120
     },
     button: {
       marginTop: 10,
@@ -146,8 +178,9 @@ interface Style {
       height: '100%',
     },
     title: {
-      fontSize: 28,
+      fontSize: 26,
       fontWeight: 'bold',
+      marginBottom: 50
     },
     logoContainer: {
       marginTop: 20
@@ -169,7 +202,6 @@ interface Style {
     },
     extraStyle: {
       marginTop: 20,
-      marginBottom: 20,
       justifyContent: 'flex-start',
       paddingLeft: 50,
       paddingRight: 50
@@ -191,6 +223,6 @@ interface Style {
       marginTop: 40
     },
     nexStyle: {
-      paddingTop: 30,
+      paddingTop: 70,
     }
   });  

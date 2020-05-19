@@ -15,6 +15,7 @@ export const fr: AppLanguage = {
   signWith: "Se connecter avec",
   registerWith: "Ou inscrivez-vous avec",
   checkAcc: "Vous n'avez pas de compte?",
+  change: "Changer le mot de passe",
   loginValidation : {
     username: `E-mail / téléphone est requis`,
     password: `Mot de passe requis`,

@@ -27,6 +27,7 @@ export interface AppLanguage {
   signWith: string,
   registerWith: string,
   checkAcc: string,
+  change: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }

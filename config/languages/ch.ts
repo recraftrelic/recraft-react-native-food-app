@@ -15,6 +15,7 @@ export const ch: AppLanguage = {
   signWith: "登陆使用",
   registerWith: "或注册",
   checkAcc: "还没有帐号？",
+  change: "更改密码",
   loginValidation : {
     username: `电子邮件/电话为必填项`,
     password: `密码是必需的`,
