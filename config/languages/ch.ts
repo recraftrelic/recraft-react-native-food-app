@@ -8,6 +8,8 @@ export const ch: AppLanguage = {
   signText: "登录以继续",
   remember: "记得",
   forgetText: "忘记密码了吗？",
+  forget: "忘记密码d",
+  forgePasswordText: "输入您的电子邮件或电话",
   signWith: "登陆使用",
   checkAcc: "还没有帐号？",
   loginValidation : {

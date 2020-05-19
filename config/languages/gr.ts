@@ -8,6 +8,8 @@ export const gr: AppLanguage = {
   signText: "Melden Sie sich an, um fortzufahren",
   remember: "Merken",
   forgetText: "Passwort vergessen?",
+  forget: "Passwort vergessen",
+  forgePasswordText: "Geben Sie Ihre E-Mail-Adresse oder Ihr Telefon ein",
   signWith: "Melden Sie sich mit an",
   checkAcc: "Sie haben noch keinen Account?",
   loginValidation : {

@@ -8,6 +8,8 @@ export const fr: AppLanguage = {
   signText: "Connectez-vous pour continuer",
   remember: "Rappelles toi",
   forgetText: "Mot de passe oublié?",
+  forget: "Mot de passe oublié",
+  forgePasswordText: "Entrez votre email ou téléphone",
   signWith: "Se connecter avec",
   checkAcc: "Vous n'avez pas de compte?",
   loginValidation : {

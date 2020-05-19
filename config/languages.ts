@@ -20,6 +20,8 @@ export interface AppLanguage {
   signText: string,
   remember: string,
   forgetText: string,
+  forget: string,
+  forgePasswordText: string,
   signWith: string,
   checkAcc: string,
   loginValidation: loginValidation,
