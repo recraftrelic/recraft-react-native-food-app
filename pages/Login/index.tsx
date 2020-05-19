@@ -27,6 +27,12 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     const backButton = () => {
         history.goBack();
     }  
+    const goToSignup = () => {
+      history.push('/register');
+    }  
+    const goToForget = () => {
+      history.push('/forget');
+    } 
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
@@ -108,7 +114,9 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                 <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
               </View>
               <View style={style.topContainer}>
-                <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgetText}</ThemedText>
+                <TouchableOpacity onPress={goToForget}>
+                  <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgetText}</ThemedText>
+                </TouchableOpacity>
               </View>
               <View style={[style.topContainer, style.nexStyle]}>
                 <ThemedText styleKey="highlightTextColor" style={style.smallText}>or</ThemedText>
@@ -126,7 +134,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
               </View>
               <View style={style.secondContainer}>
                 <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.checkAcc}</ThemedText>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={goToSignup}>
                   <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.signUp}</ThemedText>
                 </TouchableOpacity>
               </View>
