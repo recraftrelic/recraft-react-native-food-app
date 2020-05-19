@@ -1,4 +1,4 @@
-package com.recraftreactnativebaseapp;
+package com.recraftreactnativefoodapp;
 
 import com.facebook.react.ReactActivity;
 

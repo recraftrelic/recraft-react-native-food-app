@@ -1,4 +1,4 @@
-package com.recraftreactnativebaseapp;
+package com.recraftreactnativefoodapp;
 
 import android.app.Application;
 import android.content.Context;
