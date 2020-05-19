@@ -81,10 +81,10 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                 <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
               </View>
             </TouchableOpacity>
+            <View style={[style.topContainer, style.logoContainer]}> 
+              <Image source={constants.recraftLogo} style={style.logoImage}/>
+            </View>
             <ScrollView>
-              <View style={[style.topContainer, style.logoContainer]}> 
-                <Image source={constants.recraftLogo} style={style.logoImage}/>
-              </View>
               <View style={style.topContainer}> 
                 <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.signIn}</ThemedText>
               </View>
