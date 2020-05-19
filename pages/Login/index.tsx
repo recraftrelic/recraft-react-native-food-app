@@ -12,7 +12,6 @@ import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import microValidator from 'micro-validator';
 import { ValidationError } from '../../config/validation';
 import Input from '../../components/Base/Input';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 interface LoginField {
     username?: string;
@@ -67,7 +66,7 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     
         if(!Object.keys(errors).length)
         {
-          history.push('/')
+          history.push('/base')
         }
         else {
           setErrors(errors)
@@ -92,10 +91,10 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
               <View style={style.topContainer}> 
                 <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.signText}</ThemedText>
               </View>
-              <View style={[style.topContainer, style.extraStyle]}> 
+              <View style={[style.extraStyle]}> 
                 <Input placeholder={"Email/Phone"} onChangeText={onChangeUsername} value={username} errors={errors.username}/>
               </View>
-              <View style={[style.topContainer, style.extraStyle]}> 
+              <View style={[style.extraStyle]}> 
                 <Input placeholder={"Password"} onChangeText={onChangePassword} value={password} errors={errors.password} secureTextEntry={true}/>
               </View>
               <View style={style.topContainer}>
@@ -108,23 +107,23 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                   <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.remember}</ThemedText>
                 </View>
               </View>
-              <View style={[style.topContainer, {paddingTop: 30}]}>
+              <View style={[style.topContainer, style.nexStyle]}>
                 <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
               </View>
               <View style={style.topContainer}>
                 <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgetText}</ThemedText>
               </View>
-              <View style={[style.topContainer, {paddingTop: 30}]}>
+              <View style={[style.topContainer, style.nexStyle]}>
                 <ThemedText styleKey="highlightTextColor" style={style.smallText}>or</ThemedText>
               </View>
-              <View style={[style.topContainer, {paddingTop: 30}]}>
+              <View style={[style.topContainer, style.nexStyle]}>
                 <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.signWith}</ThemedText>
               </View>
               <View style={style.topContainer}>
-                <TouchableOpacity style={[style.iconContainer, {backgroundColor: 'blue'}]}>
+                <TouchableOpacity style={[style.iconContainer, {backgroundColor: theme.facebookColor}]}>
                   <MaterialIcon name={"facebook-box"} size={30} color={theme.highlightTextColor} />
                 </TouchableOpacity>
-                <TouchableOpacity style={[style.iconContainer, {backgroundColor: 'red', marginRight: 0}]}>
+                <TouchableOpacity style={[style.iconContainer, {backgroundColor: theme.googleColor, marginRight: 0}]}>
                   <MaterialIcon name={"google-plus"} size={30} color={theme.highlightTextColor} />
                 </TouchableOpacity>
               </View>
@@ -156,6 +155,7 @@ interface Style {
     rightContainer: ViewStyle;
     iconContainer: ViewStyle;
     extraStyle: ViewStyle;
+    nexStyle: ViewStyle;
     textStyle: TextStyle;
     smallText: TextStyle;
     title: TextStyle;
@@ -231,7 +231,10 @@ interface Style {
       paddingLeft: 25,
     },
     extraStyle: {
-      marginTop: 20
+      marginTop: 20,
+      justifyContent: 'flex-start',
+      paddingLeft: 50,
+      paddingRight: 50
     },
     rightContainer: {
       flex: 1, 
@@ -249,4 +252,7 @@ interface Style {
       marginRight: 20,
       marginTop: 40
     },
+    nexStyle: {
+      paddingTop: 30,
+    }
   });  

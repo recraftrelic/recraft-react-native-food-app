@@ -23,7 +23,7 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
         history.goBack();
     }  
     const goToLogin = () => {
-        history.push('login');
+        history.push('/login');
     }  
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();

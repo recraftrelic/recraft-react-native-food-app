@@ -30,5 +30,8 @@ interface Style {
 const style: Style = StyleSheet.create<Style>({
     textContainer: {
         paddingTop: 10, 
+        textShadowColor: 'rgba(0, 0, 0, 1)',
+        textShadowOffset: {width: -1, height: 1},
+        textShadowRadius: 10
     },
 })

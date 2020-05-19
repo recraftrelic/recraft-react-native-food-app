@@ -19,6 +19,9 @@ export const darkTheme: AppTheme = {
     alternateMessageBackgroundColor: '#4682b4',
     appColor: '#6b4f1d',
     navColor: '#602124',
+    facebookColor: '#3b5998',
+    googleColor: '#db4a39',
+    errorColor: '#FF0000',
   }
   
   export const lightTheme: AppTheme = {
@@ -31,6 +34,9 @@ export const darkTheme: AppTheme = {
     alternateMessageBackgroundColor: '#B0E0E6',
     appColor: '#6b4f1d',
     navColor: '#602124',
+    facebookColor: '#3b5998',
+    googleColor: '#db4a39',
+    errorColor: '#FF0000',
   }
 
 export const themes: ThemesMap = {

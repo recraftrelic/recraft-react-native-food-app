@@ -11,6 +11,9 @@ export interface AppTheme {
     alternateMessageBackgroundColor: string,
     appColor: string,
     navColor: string,
+    errorColor: string,
+    facebookColor: string,
+    googleColor: string,
 }
 
 export interface AppConstants {
