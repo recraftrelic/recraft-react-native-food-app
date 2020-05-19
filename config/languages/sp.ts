@@ -15,6 +15,7 @@ export const sp: AppLanguage = {
   signWith: "Inicia sesión con",
   registerWith: "O regístrese con",
   checkAcc: "¿No tienes una cuenta?",
+  change: "Cambia la contraseña",
   loginValidation : {
     username: `Se requiere correo electrónico / teléfono`,
     password: `se requiere contraseña`,
