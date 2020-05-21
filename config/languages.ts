@@ -31,6 +31,7 @@ export interface AppLanguage {
   verifyText: string,
   resend: string,
   verifyCode: string,
+  change: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }

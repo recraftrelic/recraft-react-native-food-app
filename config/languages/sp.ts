@@ -19,6 +19,7 @@ export const sp: AppLanguage = {
   verifyText: "Ingrese su código",
   resend: "Si no obtienes un código? reenviar",
   verifyCode: "Código de verificación",
+  change: "Cambia la contraseña",
   loginValidation : {
     username: `Se requiere correo electrónico / teléfono`,
     password: `se requiere contraseña`,

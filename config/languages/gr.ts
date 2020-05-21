@@ -19,6 +19,7 @@ export const gr: AppLanguage = {
   verifyText: "Gib deinen Code ein",
   resend: "Wenn Sie keinen Code bekommen? erneut senden",
   verifyCode: "Code überprüfen",
+  change: "Passwort ändern",
   loginValidation : {
     username: `E-Mail / Telefon ist erforderlich`,
     password: `Passwort wird benötigt`,

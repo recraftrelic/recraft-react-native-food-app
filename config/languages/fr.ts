@@ -19,6 +19,7 @@ export const fr: AppLanguage = {
   verifyText: "Entrez votre code",
   resend: "Si vous n'obtenez pas de code? renvoyer",
   verifyCode: "Vérifier le code",
+  change: "Changer le mot de passe",
   loginValidation : {
     username: `E-mail / téléphone est requis`,
     password: `Mot de passe requis`,

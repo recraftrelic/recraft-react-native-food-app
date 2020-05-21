@@ -19,6 +19,7 @@ export const en: AppLanguage = {
   verifyText: "Enter your code",
   resend: "If don't get a code? resend",
   verifyCode: "Verify Code",
+  change: "Change Password",
   loginValidation : {
     username: `Email/Phone is required`,
     password: `Password is required`,
