@@ -98,13 +98,13 @@ const ChangePassword: React.FunctionComponent<RouteComponentProps> = ({
               <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.change}</ThemedText>
             </View>
             <View style={[style.extraStyle]}> 
-              <Input placeholder={"Current Password"} onChangeText={onChangeCurrentPassword} value={currentPassword} errors={errors.currentPassword}/>
+              <Input placeholder={"Current Password"} onChangeText={onChangeCurrentPassword} value={currentPassword} errors={errors.currentPassword} secureTextEntry={true}/>
             </View>
             <View style={[style.extraStyle]}> 
-              <Input placeholder={"New Password"} onChangeText={onChangeNewPassword} value={newPassword} errors={errors.newPassword}/>
+              <Input placeholder={"New Password"} onChangeText={onChangeNewPassword} value={newPassword} errors={errors.newPassword} secureTextEntry={true}/>
             </View>
             <View style={[style.extraStyle]}> 
-              <Input placeholder={"Confirm Password"} onChangeText={onChangeConfirmPassword} value={confirmPassword} errors={errors.confirmPassword}/>
+              <Input placeholder={"Confirm Password"} onChangeText={onChangeConfirmPassword} value={confirmPassword} errors={errors.confirmPassword} secureTextEntry={true}/>
             </View>
             <View style={[style.topContainer, style.nexStyle]}>
               <RoundButton buttonStyle={style.button} label={language.change} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
