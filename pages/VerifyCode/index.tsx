@@ -37,6 +37,9 @@ const VerifyCode: React.FunctionComponent<RouteComponentProps> = ({
                 <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
               </View>
             </TouchableOpacity>
+            <View style={[style.topContainer, style.logoContainer]}> 
+              <Image source={constants.verifyLogo} style={style.logoImage}/>
+            </View>
             <View style={[style.topContainer, style.secondContainer]}> 
               <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.verify}</ThemedText>
             </View>
@@ -80,6 +83,8 @@ interface Style {
     smallText: TextStyle;
     title: TextStyle;
     cell: TextStyle;
+    logoImage: ImageStyle;
+    logoContainer: ViewStyle;
   }
   
   const style: Style = StyleSheet.create<Style>({
@@ -99,7 +104,7 @@ interface Style {
       paddingRight: 50,
     },
     secondContainer: {
-      marginTop: 150
+      marginTop: 30
     },
     button: {
       marginTop: 10,
@@ -156,5 +161,13 @@ interface Style {
       lineHeight: 38,
       fontSize: 24,
       textAlign: 'center',
+    },
+    logoContainer: {
+      marginTop: 120
+    },
+    logoImage: {
+      justifyContent: 'center',
+      width: 50, 
+      height: 50,
     },
   });  

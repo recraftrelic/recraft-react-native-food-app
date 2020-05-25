@@ -19,6 +19,7 @@ export const ch: AppLanguage = {
   verifyText: "输入您的代码",
   resend: "如果没有密码？重发",
   verifyCode: "验证码",
+  change: "更改密码",
   loginValidation : {
     username: `电子邮件/电话为必填项`,
     password: `密码是必需的`,
