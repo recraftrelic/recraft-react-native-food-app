@@ -5143,6 +5143,11 @@ react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-i
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-native-confirmation-code-field@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-confirmation-code-field/-/react-native-confirmation-code-field-6.1.1.tgz#9aa745e26d6f6f578c76d3cfa7d189988f764d22"
+  integrity sha512-pmv2dQcuQrLqkRkvGklp2HVp8tVeV97c2C+jFSy3o/snIrWzJRf+TdJ+x01M99KS7eg4rv/yIGFu8ouBh+BIKg==
+
 react-native-picker-select@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/react-native-picker-select/-/react-native-picker-select-7.0.0.tgz#4808a1177f997e234bb8505849dfffe1a01fedac"

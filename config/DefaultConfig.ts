@@ -22,6 +22,7 @@ export interface AppConstants {
     title: string,
     recraftLogo: any,
     bannerImage: any,
+    verifyLogo: any,
 }
 
 export interface ApplicationConfig {
@@ -31,6 +32,7 @@ export interface ApplicationConfig {
 // @ts-ignore
 const Logo = require("../images/logo.png");
 const banner = require("../images/main-bg.jpg");
+const verify = require("../images/office.png");
 
 export const defaultConfig: ApplicationConfig = {
     constants: {
@@ -39,5 +41,6 @@ export const defaultConfig: ApplicationConfig = {
       title: "Recraft Food",
       recraftLogo: Logo,
       bannerImage: banner,
+      verifyLogo: verify,
     }
 }

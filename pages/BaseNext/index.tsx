@@ -119,7 +119,7 @@ interface Style {
       textTransform: 'uppercase'
     },
     logoContainer: {
-      marginTop: 120
+      marginTop: 75
     },
     backContainer: {
       flexDirection: 'row', 

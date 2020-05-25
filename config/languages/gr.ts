@@ -15,6 +15,10 @@ export const gr: AppLanguage = {
   signWith: "Melden Sie sich mit an",
   registerWith: "Oder registrieren Sie sich mit",
   checkAcc: "Sie haben noch keinen Account?",
+  verify: "Überprüfen Sie Ihr Handy",
+  verifyText: "Gib deinen Code ein",
+  resend: "Wenn Sie keinen Code bekommen? erneut senden",
+  verifyCode: "Code überprüfen",
   change: "Passwort ändern",
   loginValidation : {
     username: `E-Mail / Telefon ist erforderlich`,

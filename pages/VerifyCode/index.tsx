@@ -9,17 +9,13 @@ import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import microValidator from 'micro-validator';
-import { ValidationError } from '../../config/validation';
-import Input from '../../components/Base/Input';
-
-interface ForgetField {
-    email?: string;
-}
+import { CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell,} from 'react-native-confirmation-code-field';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
-const Login: React.FunctionComponent<RouteComponentProps> = ({
+const CELL_COUNT = 4;
+
+const VerifyCode: React.FunctionComponent<RouteComponentProps> = ({
     history
 }: RouteComponentProps) => {
 
@@ -29,33 +25,9 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
-
-    const validate = (data: ForgetField): ValidationError => {
-        const errors = microValidator.validate({
-            email: {
-                required: {
-                    errorMsg: language.loginValidation.username
-                },
-            },
-        },data)
-        
-        return errors
-      }
-    
-      const [email,onChangeEmail] = useState<string>("")
-      const [errors,setErrors] = useState<ValidationError>({})
-
-      const goToHome = () => {
-        const errors: ValidationError = validate({email: email,})
-    
-        if(!Object.keys(errors).length)
-        {
-          history.push('/change')
-        }
-        else {
-          setErrors(errors)
-        }
-      }
+    const [value, setValue] = useState('');
+    const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
+    const [props, getCellOnLayoutHandler] = useClearByFocusCell({ value, setValue});
     
     return (
         <View style={style.mainContainer}>
@@ -65,24 +37,35 @@ const Login: React.FunctionComponent<RouteComponentProps> = ({
                 <MaterialIcon name="chevron-left-circle-outline" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
               </View>
             </TouchableOpacity>
+            <View style={[style.topContainer, style.logoContainer]}> 
+              <Image source={constants.verifyLogo} style={style.logoImage}/>
+            </View>
             <View style={[style.topContainer, style.secondContainer]}> 
-              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.forget}</ThemedText>
+              <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.verify}</ThemedText>
             </View>
             <View style={style.topContainer}> 
-              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.forgePasswordText}</ThemedText>
+              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.verifyText}</ThemedText>
             </View>
             <View style={[style.extraStyle]}> 
-              <Input placeholder={"Email/Phone"} onChangeText={onChangeEmail} value={email} errors={errors.email}/>
+            <CodeField ref={ref} {...props} value={value} onChangeText={setValue} cellCount={CELL_COUNT} rootStyle={style.codeFiledRoot} keyboardType="number-pad" textContentType="oneTimeCode" renderCell={({index, symbol, isFocused}) => (
+              <View key={index} onLayout={getCellOnLayoutHandler(index)} style={{borderBottomWidth: 2, borderColor: theme.highlightTextColor}}>
+                <ThemedText styleKey="highlightTextColor" style={[style.cell, isFocused]}>{symbol || (isFocused ? <Cursor /> : null)}</ThemedText>
+              </View>
+            )}
+            />
             </View>
             <View style={[style.topContainer, style.nexStyle]}>
-              <RoundButton buttonStyle={style.button} label={"Send"} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToHome}/>
+              <RoundButton buttonStyle={style.button} label={language.verifyCode} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor}/>
+            </View>
+            <View style={style.topContainer}>
+              <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.resend}</ThemedText>
             </View>
           </ImageBackground>
         </View>
     );
 }
 
-export default Login;
+export default VerifyCode;
 
 interface Style {
     mainContainer: ViewStyle;
@@ -93,15 +76,15 @@ interface Style {
     backIcon: ViewStyle;
     backContainer: ViewStyle;
     imageStyle: ImageStyle;
-    logoImage: ImageStyle;
-    logoContainer: ViewStyle;
-    rightContainer: ViewStyle;
-    iconContainer: ViewStyle;
     extraStyle: ViewStyle;
     nexStyle: ViewStyle;
+    codeFiledRoot: ViewStyle;
     textStyle: TextStyle;
     smallText: TextStyle;
     title: TextStyle;
+    cell: TextStyle;
+    logoImage: ImageStyle;
+    logoContainer: ViewStyle;
   }
   
   const style: Style = StyleSheet.create<Style>({
@@ -113,11 +96,6 @@ interface Style {
       justifyContent: 'center',
       flexDirection: 'column',
     },
-    logoImage: {
-      justifyContent: 'center',
-      width: 180, 
-      height: 180,
-    },
     topContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
@@ -126,7 +104,7 @@ interface Style {
       paddingRight: 50,
     },
     secondContainer: {
-      marginTop: 150
+      marginTop: 30
     },
     button: {
       marginTop: 10,
@@ -146,11 +124,8 @@ interface Style {
       height: '100%',
     },
     title: {
-      fontSize: 28,
+      fontSize: 26,
       fontWeight: 'bold',
-    },
-    logoContainer: {
-      marginTop: 20
     },
     backContainer: {
       flexDirection: 'row', 
@@ -174,23 +149,25 @@ interface Style {
       paddingLeft: 50,
       paddingRight: 50
     },
-    rightContainer: {
-      flex: 1, 
-      justifyContent: "flex-end", 
-      alignItems: 'flex-end',
-      paddingTop: 5,
-      paddingRight: 3
-    },
-    iconContainer: {
-      width: 50,
-      height: 50,
-      borderRadius: 50,
-      alignItems: "center",
-      paddingTop: 10,
-      marginRight: 20,
-      marginTop: 40
-    },
     nexStyle: {
       paddingTop: 30,
-    }
+    },
+    codeFiledRoot: {
+      marginTop: 20
+    },
+    cell: {
+      width: 40,
+      height: 40,
+      lineHeight: 38,
+      fontSize: 24,
+      textAlign: 'center',
+    },
+    logoContainer: {
+      marginTop: 120
+    },
+    logoImage: {
+      justifyContent: 'center',
+      width: 50, 
+      height: 50,
+    },
   });  
