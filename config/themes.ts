@@ -22,6 +22,7 @@ export const darkTheme: AppTheme = {
     facebookColor: '#3b5998',
     googleColor: '#db4a39',
     errorColor: '#FF0000',
+    mainColor: '#f7bb39',
   }
   
   export const lightTheme: AppTheme = {
@@ -37,6 +38,7 @@ export const darkTheme: AppTheme = {
     facebookColor: '#3b5998',
     googleColor: '#db4a39',
     errorColor: '#FF0000',
+    mainColor: '#f7bb39',
   }
 
 export const themes: ThemesMap = {

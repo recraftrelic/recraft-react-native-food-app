@@ -14,6 +14,7 @@ export interface AppTheme {
     errorColor: string,
     facebookColor: string,
     googleColor: string,
+    mainColor: string,
 }
 
 export interface AppConstants {
@@ -23,6 +24,7 @@ export interface AppConstants {
     recraftLogo: any,
     bannerImage: any,
     verifyLogo: any,
+    locationIcon: any,
 }
 
 export interface ApplicationConfig {
@@ -33,6 +35,7 @@ export interface ApplicationConfig {
 const Logo = require("../images/logo.png");
 const banner = require("../images/main-bg.jpg");
 const verify = require("../images/office.png");
+const location = require("../images/location.png");
 
 export const defaultConfig: ApplicationConfig = {
     constants: {
@@ -42,5 +45,6 @@ export const defaultConfig: ApplicationConfig = {
       recraftLogo: Logo,
       bannerImage: banner,
       verifyLogo: verify,
+      locationIcon: location,
     }
 }

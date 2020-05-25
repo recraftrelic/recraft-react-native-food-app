@@ -20,6 +20,10 @@ export const fr: AppLanguage = {
   resend: "Si vous n'obtenez pas de code? renvoyer",
   verifyCode: "Vérifier le code",
   change: "Changer le mot de passe",
+  location: "Location",
+  locationTitle: "SELECT YOUR CITY AND AREA",
+  locationContent: "FIND THE BEST RESTAURANT FROM",
+  locationText: "WHERE YOU WANT TO ORDER",
   loginValidation : {
     username: `E-mail / téléphone est requis`,
     password: `Mot de passe requis`,

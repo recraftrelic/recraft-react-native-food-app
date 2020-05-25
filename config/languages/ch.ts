@@ -20,6 +20,10 @@ export const ch: AppLanguage = {
   resend: "如果没有密码？重发",
   verifyCode: "验证码",
   change: "更改密码",
+  location: "Location",
+  locationTitle: "SELECT YOUR CITY AND AREA",
+  locationContent: "FIND THE BEST RESTAURANT FROM",
+  locationText: "WHERE YOU WANT TO ORDER",
   loginValidation : {
     username: `电子邮件/电话为必填项`,
     password: `密码是必需的`,

@@ -20,6 +20,10 @@ export const gr: AppLanguage = {
   resend: "Wenn Sie keinen Code bekommen? erneut senden",
   verifyCode: "Code überprüfen",
   change: "Passwort ändern",
+  location: "Location",
+  locationTitle: "SELECT YOUR CITY AND AREA",
+  locationContent: "FIND THE BEST RESTAURANT FROM",
+  locationText: "WHERE YOU WANT TO ORDER",
   loginValidation : {
     username: `E-Mail / Telefon ist erforderlich`,
     password: `Passwort wird benötigt`,
