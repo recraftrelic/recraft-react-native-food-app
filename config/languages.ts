@@ -32,6 +32,11 @@ export interface AppLanguage {
   resend: string,
   verifyCode: string,
   change: string,
+  location: string,
+  locationTitle: string,
+  locationContent: string,
+  locationText: string,
+  profile: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }

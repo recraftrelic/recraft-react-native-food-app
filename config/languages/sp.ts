@@ -20,6 +20,11 @@ export const sp: AppLanguage = {
   resend: "Si no obtienes un código? reenviar",
   verifyCode: "Código de verificación",
   change: "Cambia la contraseña",
+  location: "Location",
+  locationTitle: "SELECT YOUR CITY AND AREA",
+  locationContent: "FIND THE BEST RESTAURANT FROM",
+  locationText: "WHERE YOU WANT TO ORDER",
+  profile: "Profile",
   loginValidation : {
     username: `Se requiere correo electrónico / teléfono`,
     password: `se requiere contraseña`,

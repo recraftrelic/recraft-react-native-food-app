@@ -22,6 +22,9 @@ const VerifyCode: React.FunctionComponent<RouteComponentProps> = ({
     const backButton = () => {
         history.goBack();
     }  
+    const goToLocation = () => {
+      history.push('/location');
+    } 
     const constants: AppConstants = useConstants();
     const theme: AppTheme = useTheme();
     const language: AppLanguage = useLanguage();
@@ -55,7 +58,7 @@ const VerifyCode: React.FunctionComponent<RouteComponentProps> = ({
             />
             </View>
             <View style={[style.topContainer, style.nexStyle]}>
-              <RoundButton buttonStyle={style.button} label={language.verifyCode} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor}/>
+              <RoundButton buttonStyle={style.button} label={language.verifyCode} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToLocation}/>
             </View>
             <View style={style.topContainer}>
               <ThemedText styleKey="highlightTextColor" style={style.smallText}>{language.resend}</ThemedText>
