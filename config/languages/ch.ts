@@ -24,6 +24,7 @@ export const ch: AppLanguage = {
   locationTitle: "SELECT YOUR CITY AND AREA",
   locationContent: "FIND THE BEST RESTAURANT FROM",
   locationText: "WHERE YOU WANT TO ORDER",
+  profile: "Profile",
   loginValidation : {
     username: `电子邮件/电话为必填项`,
     password: `密码是必需的`,

@@ -24,6 +24,7 @@ export const en: AppLanguage = {
   locationTitle: "SELECT YOUR CITY AND AREA",
   locationContent: "FIND THE BEST RESTAURANT FROM",
   locationText: "WHERE YOU WANT TO ORDER",
+  profile: "Profile",
   loginValidation : {
     username: `Email/Phone is required`,
     password: `Password is required`,

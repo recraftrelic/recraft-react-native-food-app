@@ -54,10 +54,7 @@ const Location: React.FunctionComponent<Props> = ({
   return (
     <View style={style.mainContainer}>
       <View style={[style.imageStyle, {backgroundColor: theme.mainColor}]} >
-        <Drawer open={menu} type="overlay" content={<ControlPanel label={'Profile'} />}
-        tweenDuration={100}
-        openDrawerOffset={50}
-        panOpenMask={0.2}>
+        <Drawer open={menu} type="overlay" content={<ControlPanel label={language.profile} />} tweenDuration={100} openDrawerOffset={50} panOpenMask={0.2}>
           <View style={style.backContainer}>
             <TouchableOpacity style={style.leftContainer} onPress={() => setMenu(!menu)}>
               <Octicons name="three-bars" size={30} color={theme.highlightTextColor} style={style.backIcon}/>

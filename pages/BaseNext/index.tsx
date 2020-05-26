@@ -48,7 +48,7 @@ const BaseNext: React.FunctionComponent<RouteComponentProps> = ({
             </View>
             <View style={style.secondContainer}>
               <RoundButton buttonStyle={style.button} label={language.signIn} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToLogin}/>
-              <RoundButton buttonStyle={style.button} label="Register" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToRegister}/>
+              <RoundButton buttonStyle={style.button} label={language.register} buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} onPress={goToRegister}/>
             </View>
           </ImageBackground>
         </View>

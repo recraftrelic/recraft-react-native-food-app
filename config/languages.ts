@@ -36,6 +36,7 @@ export interface AppLanguage {
   locationTitle: string,
   locationContent: string,
   locationText: string,
+  profile: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }
