@@ -11,6 +11,8 @@ import useTheme from '../../hooks/useTheme';
 import RoundButton from '../../components/Base/RoundButton';
 import Octicons from 'react-native-vector-icons/Octicons';
 import RNPickerSelect from 'react-native-picker-select';
+import Drawer from 'react-native-drawer';
+import ControlPanel from '../../components/Base/ControlPanel';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -27,6 +29,7 @@ const Location: React.FunctionComponent<Props> = ({
   const theme: AppTheme = useTheme();
   const language: AppLanguage = useLanguage();
   const [location, setLocation] = useState<string>('India');
+  const [menu, setMenu] = useState<Boolean>(false);
 
   const locations = [
     { label: 'India', value: 'in' },
@@ -46,18 +49,24 @@ const Location: React.FunctionComponent<Props> = ({
     setLocation(value)
   }
 
+  console.disableYellowBox = true;
+
   return (
     <View style={style.mainContainer}>
       <View style={[style.imageStyle, {backgroundColor: theme.mainColor}]} >
+        <Drawer open={menu} type="overlay" content={<ControlPanel label={'Profile'} />}
+        tweenDuration={100}
+        openDrawerOffset={50}
+        panOpenMask={0.2}>
           <View style={style.backContainer}>
-            <TouchableOpacity style={style.leftContainer}>
+            <TouchableOpacity style={style.leftContainer} onPress={() => setMenu(!menu)}>
               <Octicons name="three-bars" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
             </TouchableOpacity>
             <View style={style.rightContainer}>
               <ThemedText styleKey="highlightTextColor" style={[style.textStyle, style.title]}>{language.location}</ThemedText>
             </View>
           </View>
-        <View style={[style.topContainer, style.logoContainer]}> 
+          <View style={[style.topContainer, style.logoContainer]}> 
           <Image source={constants.locationIcon} style={style.logoImage}/>
         </View>
         <View style={style.topContainer}> 
@@ -85,6 +94,7 @@ const Location: React.FunctionComponent<Props> = ({
           </View>
           <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} />
         </View>
+        </Drawer>
       </View>
     </View>
   );

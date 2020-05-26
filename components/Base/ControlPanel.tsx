@@ -14,33 +14,41 @@ const ControlPanel: React.FunctionComponent<Props> = ({
     const theme: AppTheme = useTheme();
 
     return (
-        <TouchableOpacity>
-            <View style={style.container}>
-                <ThemedText styleKey="textColor" style={[style.userNameStyle, {borderColor: theme.lightBottomColor}]}>{label}</ThemedText>
+        <View style={style.mainContainer}>
+            <View style={[style.imageStyle, {backgroundColor: theme.highlightTextColor}]}>
+              <ThemedText styleKey="textColor" style={style.userNameStyle}>{label}</ThemedText>
             </View>
-        </TouchableOpacity>
+        </View>
     );
 };
 
 export default ControlPanel;
 
 interface Style {
-    container: ViewStyle;
+    mainContainer: ViewStyle;
+    imageStyle: ViewStyle;
     userNameStyle: TextStyle;
 }
 
 const style: Style = StyleSheet.create<Style>({
-    container: {
-        flexDirection: 'row',
-        padding: 10,
-        justifyContent: "center",
+    mainContainer: {
+        flex: 1,
+        padding: 0,
+        margin: 0,
+        fontSize: 16,
+        justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    imageStyle: { 
+        width: '100%', 
+        height: '100%',
+        paddingTop: 50
     },
     userNameStyle: {
         fontWeight: "bold",
-        borderWidth: 2,
         paddingTop: 10,
         paddingBottom: 10,
-        paddingLeft: 25,
-        paddingRight: 25,
+        paddingLeft: 20,
+        paddingRight: 20,
     }
 })
