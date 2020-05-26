@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { RouteComponentProps } from 'react-router-native';
 import { View, ViewStyle, StyleSheet, TouchableOpacity, Image, ImageStyle, TextStyle, Platform } from 'react-native';
 import { Dispatch } from 'redux';
@@ -10,6 +10,7 @@ import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import RoundButton from '../../components/Base/RoundButton';
 import Octicons from 'react-native-vector-icons/Octicons';
+import RNPickerSelect from 'react-native-picker-select';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -25,6 +26,25 @@ const Location: React.FunctionComponent<Props> = ({
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
   const language: AppLanguage = useLanguage();
+  const [location, setLocation] = useState<string>('India');
+
+  const locations = [
+    { label: 'India', value: 'in' },
+    { label: 'USA', value: 'us' },
+    { label: 'Germany', value: 'gr' },
+    { label: 'France', value: 'fr' },
+    { label: 'China', value: 'ch' },
+  ];
+
+  const placeholder = {
+    label: 'SELECT YOUR AREA',
+    value: null,
+    color: theme.highlightTextColor,
+  };
+
+  const onChangeLocation = (value) => {
+    setLocation(value)
+  }
 
   return (
     <View style={style.mainContainer}>
@@ -50,7 +70,19 @@ const Location: React.FunctionComponent<Props> = ({
           <ThemedText styleKey="highlightTextColor" style={style.textStyle}>{language.locationText}</ThemedText>
         </View>
         <View style={style.secondContainer}>
-          <RoundButton buttonStyle={style.button} label="SELECT YOUR AREA" buttonColor={theme.highlightTextColor} labelStyle={theme.highlightTextColor} />
+          <View style={[style.button, style.drawerStyles, {borderColor: theme.highlightTextColor}]}>
+            <View style={[style.backContainer, {paddingTop: 0}]}>
+              <View style={[style.leftContainer, style.extraStyle]}>
+                <Octicons name="location" size={20} color={theme.highlightTextColor} />
+              </View>
+              <View style={[style.rightContainer, style.nextStyle]}>
+                <RNPickerSelect placeholder={placeholder} style={{placeholder: { color: theme.highlightTextColor, fontSize: 14, fontWeight: 'bold'}, inputIOS:{color: theme.highlightTextColor},inputAndroid:{color: theme.highlightTextColor}}} value={location} onValueChange={(value) => onChangeLocation(value)} items={locations} useNativeAndroidPickerStyle={false}/>
+              </View>
+              <View style={[style.rightContainer, style.specialContainer]}>
+                <Octicons name="triangle-down" size={20} color={theme.highlightTextColor} />
+              </View>
+            </View>
+          </View>
           <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} />
         </View>
       </View>
@@ -73,6 +105,9 @@ interface Style {
   backContainer: ViewStyle;
   logoImage: ImageStyle;
   logoContainer: ViewStyle;
+  specialContainer: ViewStyle;
+  extraStyle: ViewStyle;
+  nextStyle: ViewStyle;
   textStyle: TextStyle;
   title: TextStyle;
 }
@@ -150,8 +185,21 @@ const style: Style = StyleSheet.create<Style>({
     paddingLeft: 25,
   },
   drawerStyles: { 
-    shadowColor: '#000000', 
-    shadowOpacity: 0.8, 
-    shadowRadius: 3
+    padding: isIOS() ? 10 : 0, 
+    borderRadius: 50
   },
+  specialContainer: {
+    flex: 0, 
+    paddingRight: 20, 
+    paddingLeft: 0
+  },
+  nextStyle: {
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    paddingLeft:  isIOS() ? 20 : 0,
+  },
+  extraStyle: {
+    paddingTop: isIOS() ? 0 : 15, 
+    paddingLeft: 10,
+  }
 });
