@@ -25,6 +25,9 @@ const Location: React.FunctionComponent<Props> = ({
   history
 }: Props) => {
 
+  const goToMainMenu = () => {
+    history.push('/menu')
+  }
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
   const language: AppLanguage = useLanguage();
@@ -42,7 +45,7 @@ const Location: React.FunctionComponent<Props> = ({
   const placeholder = {
     label: 'SELECT YOUR AREA',
     value: null,
-    color: theme.highlightTextColor,
+    color: theme.textColor,
   };
 
   const onChangeLocation = (value) => {
@@ -89,7 +92,7 @@ const Location: React.FunctionComponent<Props> = ({
               </View>
             </View>
           </View>
-          <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} />
+          <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} onPress={goToMainMenu}/>
         </View>
         </Drawer>
       </View>
