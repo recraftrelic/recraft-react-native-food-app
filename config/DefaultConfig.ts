@@ -25,9 +25,8 @@ export interface AppConstants {
     bannerImage: any,
     verifyLogo: any,
     locationIcon: any,
-    chineseFood: any,
-    indianFood: any,
-    frenchFood: any,
+    offer: any,
+    discount: any,
 }
 
 export interface ApplicationConfig {
@@ -39,9 +38,8 @@ const Logo = require("../images/logo.png");
 const banner = require("../images/main-bg.jpg");
 const verify = require("../images/office.png");
 const location = require("../images/location.png");
-const chineseFood = require("../images/dish-1.png");
-const indianFood = require("../images/dish-2.png");
-const frenchFood = require("../images/dish-3.png");
+const offer = require("../images/offer.png");
+const discount = require("../images/discount.jpg");
 
 export const defaultConfig: ApplicationConfig = {
     constants: {
@@ -52,8 +50,7 @@ export const defaultConfig: ApplicationConfig = {
       bannerImage: banner,
       verifyLogo: verify,
       locationIcon: location,
-      chineseFood: chineseFood,
-      indianFood: indianFood,
-      frenchFood: frenchFood,
+      offer: offer,
+      discount: discount,
     }
 }

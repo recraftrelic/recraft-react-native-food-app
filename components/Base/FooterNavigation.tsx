@@ -17,7 +17,7 @@ const FooterNavigation: React.FunctionComponent<Props> = ({
     const theme: AppTheme = useTheme();
 
     return (
-        <View style={[style.container]}>
+        <View style={[style.container, {backgroundColor: theme.mainColor}]}>
             <TouchableOpacity >
                 <View style={style.iconContainer}>
                   <Icon name="ios-home" size={45} color={theme.highlightTextColor} />
@@ -59,13 +59,15 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "space-around",
         position: 'absolute',
-        bottom: 20,
+        bottom: 5,
         flex: 1,
         width: '100%',
         alignItems: 'center',
     },
     iconContainer: {
         alignItems: 'center',
+        marginTop: 10,
+        marginBottom: 10
     },
     IconTitle: {
         fontSize: 12,

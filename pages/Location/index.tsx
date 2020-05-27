@@ -11,8 +11,6 @@ import useTheme from '../../hooks/useTheme';
 import RoundButton from '../../components/Base/RoundButton';
 import Octicons from 'react-native-vector-icons/Octicons';
 import RNPickerSelect from 'react-native-picker-select';
-import Drawer from 'react-native-drawer';
-import ControlPanel from '../../components/Base/ControlPanel';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -57,7 +55,6 @@ const Location: React.FunctionComponent<Props> = ({
   return (
     <View style={style.mainContainer}>
       <View style={[style.imageStyle, {backgroundColor: theme.mainColor}]} >
-        <Drawer open={menu} type="overlay" content={<ControlPanel label={language.profile} />} tweenDuration={100} openDrawerOffset={50} panOpenMask={0.2}>
           <View style={style.backContainer}>
             <TouchableOpacity style={style.leftContainer} onPress={() => setMenu(!menu)}>
               <Octicons name="three-bars" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
@@ -94,7 +91,6 @@ const Location: React.FunctionComponent<Props> = ({
           </View>
           <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} onPress={goToMainMenu}/>
         </View>
-        </Drawer>
       </View>
     </View>
   );

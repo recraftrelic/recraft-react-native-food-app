@@ -10,8 +10,6 @@ import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import Octicons from 'react-native-vector-icons/Octicons';
 import RNPickerSelect from 'react-native-picker-select';
-import Drawer from 'react-native-drawer';
-import ControlPanel from '../../components/Base/ControlPanel';
 import FooterNavigation from '../../components/Base/FooterNavigation';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
@@ -40,7 +38,7 @@ const MainMenu: React.FunctionComponent<Props> = ({
   ];
 
   const placeholder = {
-    label: 'Current Location',
+    label: 'CURRENT LOCATION',
     value: null,
     color: theme.textColor,
   };
@@ -54,31 +52,31 @@ const MainMenu: React.FunctionComponent<Props> = ({
   return (
     <View style={style.mainContainer}>
       <View style={[style.imageStyle, {backgroundColor: theme.mainColor}]} >
-        <Drawer open={menu} type="overlay" content={<ControlPanel label={language.profile} />} tweenDuration={100} openDrawerOffset={50} panOpenMask={0.2}>
-          <View style={style.backContainer}>
-            <TouchableOpacity style={style.leftContainer} onPress={() => setMenu(!menu)}>
-              <Octicons name="three-bars" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
-            </TouchableOpacity>
-            <View style={[style.rightContainer, style.nextStyle]}>
-              <RNPickerSelect placeholder={placeholder} style={{placeholder: { color: theme.highlightTextColor, fontSize: 16, fontWeight: 'bold'}, inputIOS:{color: theme.highlightTextColor},inputAndroid:{color: theme.highlightTextColor}}} value={location} onValueChange={(value) => onChangeLocation(value)} items={locations} useNativeAndroidPickerStyle={false}/>
-            </View>
-            <View style={[style.rightContainer, style.specialContainer, {paddingLeft: 0}]}>
-              <Octicons name="triangle-down" size={20} color={theme.highlightTextColor} />
-            </View>
-            <TouchableOpacity style={[style.rightContainer, style.specialContainer, {flex:0, paddingRight: 30}]}>
-              <Octicons name="settings" size={20} color={theme.highlightTextColor} />
-            </TouchableOpacity>
+        <View style={style.backContainer}>
+          <TouchableOpacity style={style.leftContainer} onPress={() => setMenu(!menu)}>
+            <Octicons name="three-bars" size={30} color={theme.highlightTextColor} style={style.backIcon}/>
+          </TouchableOpacity>
+          <View style={[style.rightContainer, style.nextStyle]}>
+            <RNPickerSelect placeholder={placeholder} style={{placeholder: { color: theme.highlightTextColor, fontSize: 16, fontWeight: 'bold'}, inputIOS:{color: theme.highlightTextColor},inputAndroid:{color: theme.highlightTextColor}}} value={location} onValueChange={(value) => onChangeLocation(value)} items={locations} useNativeAndroidPickerStyle={false}/>
           </View>
-          <View style={[style.button, style.drawerStyles, {borderColor: theme.highlightTextColor}]}>
-            <View style={[style.backContainer, {paddingTop: 0}]}>
-              <View style={[style.leftContainer, style.extraStyle]}>
-                <Octicons name="search" size={15} color={theme.highlightTextColor} />
-              </View>
-              <View style={[style.rightContainer, {paddingLeft: 5}]}>
-                <TextInput placeholderTextColor={theme.highlightTextColor} placeholder={language.searchFood} style={[{ color: theme.highlightTextColor }]}/>
-              </View>
+          <View style={[style.rightContainer, style.specialContainer, {paddingLeft: 0}]}>
+            <Octicons name="triangle-down" size={20} color={theme.highlightTextColor} />
+          </View>
+          <TouchableOpacity style={[style.rightContainer, style.specialContainer, {flex:0, paddingRight: 30}]}>
+            <Octicons name="settings" size={20} color={theme.highlightTextColor} />
+          </TouchableOpacity>
+        </View>
+        <View style={[style.button, style.drawerStyles, {borderColor: theme.highlightTextColor}]}>
+          <View style={[style.backContainer, {paddingTop: 0}]}>
+            <View style={[style.leftContainer, style.extraStyle]}>
+              <Octicons name="search" size={15} color={theme.highlightTextColor} />
+            </View>
+            <View style={[style.rightContainer, {paddingLeft: 5}]}>
+              <TextInput placeholderTextColor={theme.highlightTextColor} placeholder={language.searchFood} style={[{ color: theme.highlightTextColor }]}/>
             </View>
           </View>
+        </View>
+        <ScrollView>
           <View style={{backgroundColor: theme.highlightTextColor, marginTop: 20, paddingLeft: 40, paddingTop: 20, paddingBottom: 20, paddingRight: 5}}>
             <View style={[style.backContainer, {paddingLeft: 0, paddingTop: 0, paddingBottom: 10}]}>
               <View style={[style.leftContainer, {paddingTop: 0}]}>
@@ -88,22 +86,22 @@ const MainMenu: React.FunctionComponent<Props> = ({
                 <ThemedText styleKey="textColor" style={style.title}>{language.seeAll}</ThemedText>
               </View>
             </View>
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <View style={[style.backContainer, {paddingLeft: 0, paddingTop: 0, paddingBottom: 30}]}>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.chineseFood} style={style.dishImage}/>
+                  <Image source={constants.offer} style={style.dishImage}/>
                   <ThemedText styleKey="mainColor" style={style.textStyle}>{language.chineseText}</ThemedText>
                 </View>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.indianFood} style={style.dishImage}/>
+                  <Image source={constants.offer} style={style.dishImage}/>
                   <ThemedText styleKey="mainColor" style={style.textStyle}>{language.indianText}</ThemedText>
                 </View>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.frenchFood} style={style.dishImage}/>
+                  <Image source={constants.offer} style={style.dishImage}/>
                   <ThemedText styleKey="mainColor" style={style.textStyle}>{language.frenchText}</ThemedText>
                 </View>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.chineseFood} style={style.dishImage}/>
+                  <Image source={constants.offer} style={style.dishImage}/>
                   <ThemedText styleKey="mainColor" style={style.textStyle}>{language.AmericanText}</ThemedText>
                 </View>
               </View>
@@ -116,32 +114,22 @@ const MainMenu: React.FunctionComponent<Props> = ({
                 <ThemedText styleKey="textColor" style={style.title}>{language.seeAll}</ThemedText>
               </View>
             </View>
-            <ScrollView horizontal={true}>
+            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
               <View style={[style.backContainer, {paddingLeft: 0, paddingTop: 0, paddingBottom: 30}]}>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.chineseFood} style={style.dishImage}/>
+                  <Image source={constants.discount} style={style.logoImage}/>
                   <ThemedText styleKey="mainColor" style={style.textStyle}>{language.chineseText}</ThemedText>
                 </View>
                 <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.indianFood} style={style.dishImage}/>
-                  <ThemedText styleKey="mainColor" style={style.textStyle}>{language.indianText}</ThemedText>
-                </View>
-                <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.frenchFood} style={style.dishImage}/>
-                  <ThemedText styleKey="mainColor" style={style.textStyle}>{language.frenchText}</ThemedText>
-                </View>
-                <View style={[style.leftContainer, {paddingTop: 0, marginRight: 20}]}>
-                  <Image source={constants.chineseFood} style={style.dishImage}/>
-                  <ThemedText styleKey="mainColor" style={style.textStyle}>{language.AmericanText}</ThemedText>
+                  <Image source={constants.discount} style={style.logoImage}/>
+                  <ThemedText styleKey="mainColor" style={style.textStyle}>{language.chineseText}</ThemedText>
                 </View>
               </View>
             </ScrollView>
           </View>
-        </Drawer>
+        </ScrollView>
       </View>
-      <View style={style.secondContainer}>
-        <FooterNavigation history={history} />   
-      </View> 
+      <FooterNavigation history={history} />   
     </View>
   );
 };
@@ -180,12 +168,13 @@ const style: Style = StyleSheet.create<Style>({
   },
   logoImage: {
     justifyContent: 'center',
-    width: 200, 
-    height: 90,
+    width: 250, 
+    height: 190,
+    borderRadius: 10
   },
   dishImage: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
     borderRadius: 10
   },
   topContainer: {
