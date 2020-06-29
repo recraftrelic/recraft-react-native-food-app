@@ -33,6 +33,12 @@ export const ch: AppLanguage = {
   frenchText: "French",
   AmericanText: "American",
   exploreText: "EXPLORE RESTAURANT",
+  upTo: "UP TO",
+  offDiscount: "40% OFF",
+  order: "ORDER NOW",
+  cafe: "SUPER GOOD CAFE",
+  cafeText: "CAFE FAST FOOD, NORTH INDIAN 200 RS FOR TWO PERSON (APPROX)",
+  openText: "OPEN NOW",
   loginValidation : {
     username: `电子邮件/电话为必填项`,
     password: `密码是必需的`,

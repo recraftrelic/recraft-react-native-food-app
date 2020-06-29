@@ -45,6 +45,12 @@ export interface AppLanguage {
   frenchText: string,
   AmericanText: string,
   exploreText: string,
+  upTo: string,
+  offDiscount: string,
+  order: string,
+  cafe: string,
+  cafeText: string,
+  openText: string,
   loginValidation: loginValidation,
   signupValidation: signupValidation,
 }

@@ -33,6 +33,12 @@ export const gr: AppLanguage = {
   frenchText: "French",
   AmericanText: "American",
   exploreText: "EXPLORE RESTAURANT",
+  upTo: "UP TO",
+  offDiscount: "40% OFF",
+  order: "ORDER NOW",
+  cafe: "SUPER GOOD CAFE",
+  cafeText: "CAFE FAST FOOD, NORTH INDIAN 200 RS FOR TWO PERSON (APPROX)",
+  openText: "OPEN NOW",
   loginValidation : {
     username: `E-Mail / Telefon ist erforderlich`,
     password: `Passwort wird benötigt`,

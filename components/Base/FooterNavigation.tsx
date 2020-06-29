@@ -1,11 +1,14 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-native';
-import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, } from 'react-native';
+import { View, ViewStyle, StyleSheet, TextStyle, TouchableOpacity, Platform, Dimensions } from 'react-native';
 import { AppTheme } from '../../config/DefaultConfig';
 import useTheme from '../../hooks/useTheme';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ThemedText from '../../components/UI/ThemedText';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const isIOS = (): Boolean => Platform.OS == "ios";
+const {height, width} = Dimensions.get('window');
 
 interface Props extends RouteComponentProps {
     history: any
@@ -59,9 +62,9 @@ const style: Style = StyleSheet.create<Style>({
         flexDirection: 'row',
         justifyContent: "space-around",
         position: 'absolute',
-        bottom: 5,
-        flex: 1,
+        bottom: 0,
         width: '100%',
+        height: isIOS() ? height-790 : 80,
         alignItems: 'center',
     },
     iconContainer: {
