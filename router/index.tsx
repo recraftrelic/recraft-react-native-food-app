@@ -14,6 +14,7 @@ import ForgetPassword from '../pages/ForgetPassword';
 import VerifyCode from '../pages/VerifyCode';
 import ChangePassword from '../pages/ChangePassword';
 import Location from '../pages/Location';
+import Filter from '../pages/Filter';
 
 interface Props {
   configReducer: ApplicationConfig
@@ -36,6 +37,7 @@ const Router: React.FunctionComponent<Props> = ({
               <Route exact path="/verify/" component={VerifyCode} />
               <Route exact path="/change/" component={ChangePassword} />
               <Route exact path="/location/" component={Location} />
+              <Route exact path="/filter/" component={Filter} />
             </Switch>
           </BackHandlerHOC>
         </NativeRouter>

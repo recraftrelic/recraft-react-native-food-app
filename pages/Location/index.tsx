@@ -45,6 +45,10 @@ const Location: React.FunctionComponent<Props> = ({
     color: theme.highlightTextColor,
   };
 
+  const goToFilter = () => {
+    history.push('/filter')
+  }
+
   const onChangeLocation = (value) => {
     setLocation(value)
   }
@@ -89,7 +93,7 @@ const Location: React.FunctionComponent<Props> = ({
               </View>
             </View>
           </View>
-          <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} />
+          <RoundButton buttonStyle={[style.button, {backgroundColor: theme.highlightTextColor}]} label="FIND RESTAURANTS" buttonColor={theme.mainColor} labelStyle={theme.mainColor} onPress={goToFilter} />
         </View>
         </Drawer>
       </View>
