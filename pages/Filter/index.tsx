@@ -7,7 +7,7 @@ import { AppConstants, AppTheme } from '../../config/DefaultConfig';
 import useConstants from '../../hooks/useConstants';
 import useTheme from '../../hooks/useTheme';
 import RoundButton from '../../components/Base/RoundButton';
-import RangeSlider from 'react-native-range-slider';
+import RangeSlider from 'rn-range-slider';
 
 const isIOS = (): Boolean => Platform.OS == "ios";
 
@@ -20,6 +20,8 @@ const Filter: React.FunctionComponent<Props> = ({
     history
   }: Props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [rangeLow, setRangeLow] = useState(null);
+  const [rangeHigh, setRangeHigh] = useState(null);
   const constants: AppConstants = useConstants();
   const theme: AppTheme = useTheme();
   return (
@@ -50,7 +52,32 @@ const Filter: React.FunctionComponent<Props> = ({
             </View>
             <View style={styles.backContainer}>
               <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>All</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Breakfast</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Lunch</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Dinner</ThemedText>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.backContainer}>
+              <TouchableHighlight style={styles.leftContainer}>
                 <ThemedText styleKey="textColor" style={styles.textStyle}>Type of Food</ThemedText>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.backContainer}>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Any</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Veg Food</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>Non-veg</ThemedText>
               </TouchableHighlight>
             </View>
             <View style={styles.backContainer}>
@@ -59,23 +86,40 @@ const Filter: React.FunctionComponent<Props> = ({
               </TouchableHighlight>
             </View>
             <View style={styles.backContainer}>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>1*</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>2*</ThemedText>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.leftContainer}>
+                <ThemedText styleKey="textColor" style={styles.listStyle}>3*</ThemedText>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.backContainer}>
               <TouchableHighlight style={styles.centerContainer}>
                 <ThemedText styleKey="textColor" style={styles.textStyle}>Price Range</ThemedText>
               </TouchableHighlight>
             </View>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <RangeSlider
-                minValue={0}
-                maxValue={100}
-                tintColor={'#da0f22'}
-                handleBorderWidth={1}
-                handleBorderColor="#454d55"
-                selectedMinimum={20}
-                selectedMaximum={40}
-                style={{ flex: 1, height: 70, padding: 10, backgroundColor: '#ddd' }}
-                onChange={ (data)=>{ console.log(data);} }
-              />
-            </View>
+            <RangeSlider
+              style={{width: '100%', height: 40}}
+              gravity={'center'}
+              min={10}
+              max={500}
+              step={10}
+              textSize={15}
+              labelPadding={0}
+              labelGapHeight={0}
+              labelTailHeight={0}
+              labelBorderWidth={0}
+              labelTextColor={theme.textColor}
+              labelBorderColor={theme.mainColor}
+              labelBackgroundColor={theme.highlightTextColor}
+              selectionColor={theme.mainColor}
+              blankColor={theme.appColor}
+              onValueChanged={(low, high, fromUser) => {
+                  setRangeLow(low),setRangeHigh(high)
+              }}/>
             <RoundButton buttonStyle={[styles.button, { backgroundColor: theme.mainColor}]} label="APPLY" buttonColor={theme.mainColor} labelStyle={theme.highlightTextColor} />
           </View>
         </View>
@@ -101,6 +145,7 @@ interface Style {
     rightContainer: ViewStyle;
     button: ViewStyle;
     textStyle: TextStyle;
+    listStyle: TextStyle;
     modalText: TextStyle;
 }
 
@@ -145,13 +190,17 @@ const styles: Style = StyleSheet.create<Style>({
       justifyContent: "center", 
     },
     button: {
-      marginTop: 10,
+      marginTop: 30,
       minWidth: '100%',
       borderWidth: 2
     },
     textStyle: {
       fontWeight: "bold",
       fontSize: 20
+    },
+    listStyle: {
+      fontSize: 14,
+      fontWeight: "bold",
     },
     modalText: {
       fontWeight: "bold",
